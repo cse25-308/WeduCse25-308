@@ -1,10 +1,10 @@
 /* STUDIO MOMENTS - Main Stylesheet
    CSS3 with Bootstrap 5 Integration */
 
-/* GOOGLE FONTS IMPORT */
+/* FONTS  */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap');
 
-/* CSS VARIABLES (Design Tokens) */
+/* CSS VARIABLES*/
 :root {
   --primary: #1e90ff;
   --primary-dark: #1570cc;
@@ -24,7 +24,7 @@
   --font-body: 'Poppins', sans-serif;
 }
 
-/* RESET & BASE */
+/*RESET & BASE */
 *,
 *::before,
 *::after {
@@ -49,7 +49,7 @@ body {
   min-height: 100vh;
 }
 
-/* SCROLLBAR */
+/* SCROLLBAR  */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -63,7 +63,7 @@ body {
   border-radius: 3px;
 }
 
-/* HEADER & NAVIGATION */
+/* HEADER & NAVIGATION - */
 .site-header {
   background: rgba(5, 8, 15, 0.97);
   border-bottom: 2px solid var(--primary);
@@ -136,7 +136,7 @@ body {
   background: var(--primary-glow);
 }
 
-/* Hamburger (mobile) */
+/* Hamburger — hidden on desktop, shown at ≤768px */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -156,7 +156,7 @@ body {
   transition: var(--transition);
 }
 
-/* HERO SECTION (Home) */
+/* HERO SECTION (homepage) */
 .hero {
   min-height: 520px;
   background: linear-gradient(135deg, rgba(5, 8, 15, 0.92) 40%, rgba(30, 90, 180, 0.25) 100%),
@@ -296,7 +296,7 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* SECTION COMMON */
+/* SHARED SECTION LAYOUT */
 .section {
   padding: 70px 20px;
 }
@@ -327,7 +327,7 @@ body {
   margin: 12px 0 32px;
 }
 
-/* FEATURE CARDS (Home) */
+/* HOMEPAGE — FEATURE CARDS & CTA */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -385,7 +385,7 @@ body {
   font-size: 0.92rem;
 }
 
-/* CTA SECTION */
+/* CTA strip */
 .cta-section {
   background: linear-gradient(135deg, var(--bg-card), var(--bg-card2));
   border-top: 1px solid var(--border);
@@ -405,7 +405,6 @@ body {
   color: var(--text-muted);
   margin-bottom: 28px;
 }
-
 /* ABOUT PAGE */
 .about-grid {
   display: grid;
@@ -444,11 +443,11 @@ body {
   flex-shrink: 0;
 }
 
-/* GALLERY PAGE */
+/* GALLERY & LIGHTBOX  */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 .gallery-item {
@@ -456,19 +455,20 @@ body {
   overflow: hidden;
   border-radius: var(--radius);
   border: 2px solid var(--border);
+  background: var(--bg-card);
   cursor: pointer;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 240px;
+  height: 260px;
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.07);
+  transform: scale(1.08);
 }
 
 .gallery-caption {
@@ -488,7 +488,7 @@ body {
   transform: translateY(0);
 }
 
-/* Lightbox */
+/* Lightbox overlay */
 .lightbox {
   display: none;
   position: fixed;
@@ -522,7 +522,7 @@ body {
   line-height: 1;
 }
 
-/* SERVICES PAGE */
+/* SERVICES PAGE*/
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -578,8 +578,9 @@ body {
   font-weight: 600;
 }
 
-/* BOOKING PAGE */
-.booking-layout {
+/* BOOKING & ORDER PAGES */
+.booking-layout,
+.order-layout {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 30px;
@@ -627,17 +628,7 @@ body {
   margin-top: 12px;
 }
 
-/* ORDER PAGE */
-.order-layout {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 30px;
-  align-items: start;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* FORMS (shared) */
+/* FORMS (shared — all pages) */
 .form-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -672,19 +663,6 @@ body {
 
 .form-group input,
 .form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 11px 14px;
-  background: var(--bg-dark);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text-main);
-  font-family: var(--font-body);
-  font-size: 0.93rem;
-  transition: var(--transition);
-  outline: none;
-  -webkit-appearance: none;
-}
 
 .form-group input:focus,
 .form-group select:focus,
@@ -707,9 +685,11 @@ body {
   min-height: 110px;
 }
 
-/* Star rating */
+/* Star rating — row-reverse trick enables CSS-only gold highlight */
 .star-rating {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   gap: 6px;
   margin-top: 4px;
 }
@@ -728,11 +708,8 @@ body {
 
 .star-rating input:checked~label,
 .star-rating label:hover,
-.star-rating label:hover~label {
-  color: var(--accent-gold);
-}
 
-/* CONTACT PAGE */
+/* CONTACT PAGE  */
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -835,7 +812,7 @@ body {
   margin-top: 20px;
 }
 
-/* FOOTER */
+/* FOOTER  */
 .site-footer {
   background: #000;
   border-top: 2px solid var(--primary);
@@ -868,14 +845,7 @@ body {
   line-height: 1.7;
 }
 
-.footer-links h4 {
-  color: var(--text-main);
-  font-size: 0.88rem;
-  font-weight: 600;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+.footer-links h4,
 
 .footer-links a {
   display: block;
@@ -888,15 +858,6 @@ body {
 
 .footer-links a:hover {
   color: var(--primary);
-}
-
-.footer-contact h4 {
-  color: var(--text-main);
-  font-size: 0.88rem;
-  font-weight: 600;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .footer-contact p {
@@ -920,7 +881,7 @@ body {
   font-size: 0.82rem;
 }
 
-/* WhatsApp Floating Button */
+/*  WHATSAPP FLOATING BUTTON */
 .whatsapp-float {
   position: fixed;
   bottom: 28px;
@@ -945,7 +906,7 @@ body {
   background: #20b558;
 }
 
-/* ALERTS / MESSAGES */
+/* ALERTS & MESSAGES  */
 .alert {
   padding: 14px 18px;
   border-radius: var(--radius-sm);
@@ -970,7 +931,6 @@ body {
   display: block;
 }
 
-/* PAGE HERO BANNER (inner pages) */
 .page-banner {
   background: linear-gradient(135deg, var(--bg-card) 0%, rgba(30, 90, 180, 0.15) 100%);
   border-bottom: 1px solid var(--border);
@@ -989,22 +949,6 @@ body {
   color: var(--text-muted);
 }
 
-/* FEEDBACK - STAR RATING FIX */
-.star-rating {
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
-
-.star-rating input:checked~label {
-  color: var(--accent-gold);
-}
-
-.star-rating label:hover,
-.star-rating label:hover~label {
-  color: var(--accent-gold);
-}
-
-/* RESPONSIVE */
 @media (max-width: 900px) {
 
   .about-grid,
@@ -1091,7 +1035,7 @@ body {
   }
 }
 
-/* ANIMATIONS */
+/* ANIMATIONS  */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1118,31 +1062,4 @@ body {
 
 .animate-delay-3 {
   animation-delay: 0.3s;
-}
-
-/* GALLERY IMPROVEMENT */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-  border: 2px solid var(--border);
-  background: var(--bg-card);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.08);
 }
